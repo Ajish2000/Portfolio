@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="icon" type="image/x-icon" href="logo.png">
+    <title>Ajish's Portfolio</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 70px; /* Add padding for fixed nav */
+        }
+        .dropdown {
+            transition: all 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .dropdown.active {
+            max-height: 300px;
+            opacity: 1;
+        }
+        .dropdown .links {
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            background-color: #1f2937;
+        }
+        .dropdown .links a {
+            padding: 0.75rem 0;
+            color: white;
+        }
+        .dropdown .links a:hover {
+            color: #10b981;
+        }
+        .dropdown .cancel {
+            margin-top: 1rem;
+            align-self: flex-end;
+            cursor: pointer;
+        }
+        .typewriter label {
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        /* Neon effect for navigation links */
+        .neon-link {
+            text-shadow: 0 0 5px #10b981,
+                        0 0 15px #10b981,
+                        0 0 20px #10b981;
+            transition: text-shadow 0.3s ease;
+        }
+        
+        .neon-link:hover {
+            text-shadow: 0 0 5px #10b981,
+                        0 0 15px #10b981,
+                        0 0 20px #10b981,
+                        0 0 40px #10b981;
+        }
+
+        /* Enhanced Neon Effects */
+        .neon-text {
+            text-shadow: 0 0 5px #10b981,
+                        0 0 2.5px #10b981;
+        }
+        
+        .neon-box {
+            box-shadow: 0 0 5px #10b981,
+                       0 0 5px #10b981;
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .neon-box:hover {
+            box-shadow: 0 0 10px #10b981,
+                       0 0 20px #10b981,
+                       0 0 30px #10b981;
+        }
+
+      
+
+        /* Fixed Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        .image-container img {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.2);
+        }
+        /* Adjust first section padding */
+        #home {
+            padding-top: 6rem;
+        }
+        .dropdown  a{
+            font-weight: bold;
+        }
+        .desk-nav div{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white font-sans leading-relaxed">
+    <nav class="bg-gray-800/95 p-4 backdrop-blur-sm">
+        <div class="flex justify-between items-center">
+            <div class="logo text-3xl font-bold text-green-500 animate-zoom-in">
+                Web <span class="text-white">developer</span>
+            </div>
+            <div class="desk-nav hidden md:flex space-x-6">
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100"><a href="#home" class="hover:text-green-500 neon-link">Home</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200"><a href="#about" class="hover:text-green-500 neon-link">About</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300"><a href="#skills" class="hover:text-green-500 neon-link">Skills</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400"><a href="#project" class="hover:text-green-500 neon-link">Project</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500"><a href="#contact" class="hover:text-green-500 neon-link">Contact</a></div>
+            </div>
+            <i class="fa-solid fa-bars hamburg text-white md:hidden cursor-pointer text-2xl" onclick="hamburg()"></i>
+        </div>
+        <div class="dropdown md:hidden">
+            <div class="links">
+                <a href="#home" class="neon-link" onclick="closeDropdown()">Home</a>
+                <a href="#about" class="neon-link" onclick="closeDropdown()">About</a>
+                <a href="#skills" class="neon-link" onclick="closeDropdown()">Skills</a>
+                <a href="#project" class="neon-link" onclick="closeDropdown()">Project</a>
+                <a href="#contact" class="neon-link" onclick="closeDropdown()">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="py-10 md:py-16 bg-gray-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-10">
+                <div class="image w-full md:w-1/2 flex justify-center" data-aos="zoom-out" data-aos-duration="3000">
+                    <img src="ajish.png" alt="Ajish" class="rounded-full shadow-lg w-64 h-64 md:w-80 md:h-80 object-cover"/>
+                </div>
+                <div class="content w-full md:w-1/2 md:pl-6 text-center md:text-left mt-6 md:mt-0">
+                    <h1 class="text-3xl md:text-4xl font-semibold neon-text" data-aos="fade-left" data-aos-duration="1500" data-aos-delay="700">Hey I'm <span class="text-green-500">Ajish X</span></h1>
+                    <div class="typewriter text-xl md:text-2xl mt-4" data-aos="fade-right" data-aos-duration="1500" data-aos-delay="900">
+                        I'm a <span class="typewriter-text"></span><label>|</label>
+                    </div>
+                    <p class="mt-4 text-base md:text-lg" data-aos="flip-down" data-aos-duration="1500" data-aos-delay="1100">Ajish X is a skilled web developer with expertise in HTML, CSS, JavaScript, and Java. He is passionate about building responsive, user-friendly websites that deliver seamless experiences. With a focus on both design and functionality, Ajish strives to create clean, efficient code while ensuring a visually appealing and engaging user interface.</p>
+                    <div class="social-links flex justify-center md:justify-start space-x-6 mt-6">
+                        <a href="#" class="text-gray-400 hover:text-green-500 text-xl md:text-2xl" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1300"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-green-500 text-xl md:text-2xl" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1400"><i class="fa-solid fa-envelope"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-green-500 text-xl md:text-2xl" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1500"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-green-500 text-xl md:text-2xl" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1600"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                    <div class="btn mt-6 flex justify-center md:justify-start" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="1800">
+                        <a href="Ajish Rsume 1.0.pdf
+                        " class="bg-green-500 text-white px-6 py-3 rounded-md hover:bg-green-600 transition duration-300 neon-box">
+                            Download CV
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-10 md:py-16 bg-gray-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="about-me mb-8">
+                <h1 class="text-2xl md:text-3xl font-semibold text-center md:text-left neon-text" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1400"><i class="fa-solid fa-user text-green-500"></i> About <span class="text-green-500">Me</span></h1>
+                <p class="mt-4 text-base md:text-lg" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100">
+                    ✅ Passionate web developer with expertise in HTML, CSS, JavaScript, and Java.<br><br>
+                    ✅ Strong foundation in both front-end and back-end development.<br><br>
+                    ✅ Focus on creating visually appealing, functional, and responsive websites.<br><br>
+                    ✅ Driven by the desire to improve user experience.<br><br>
+                    ✅ Blends creativity with technical expertise to deliver solutions that meet both aesthetic and performance needs.<br><br>
+                    ✅ Skilled in building projects ranging from simple landing pages to complex web applications.<br><br>
+                    ✅ Ensures that each project is built with clean, efficient code and intuitive interfaces.<br><br>
+                </p>
+            </div>
+
+            <h2 class="text-xl md:text-2xl font-semibold mt-12 text-green-500 text-center md:text-left">Personal <span class="text-white">Details</span></h2>
+            <div class="form-container mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-all duration-300 neon-box">
+                    <div class="flex items-center space-x-3">
+                        <i class="fa-solid fa-user text-green-500"></i>
+                        <p>Full Name: <span class="text-gray-300 ml-2">Ajish X</span></p>
+                    </div>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-all duration-300 neon-box">
+                    <div class="flex items-center space-x-3">
+                        <i class="fa-solid fa-calendar text-green-500"></i>
+                        <p>Age: <span class="text-gray-300 ml-2">24</span></p>
+                    </div>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-all duration-300 neon-box">
+                    <div class="flex items-center space-x-3">
+                        <i class="fa-solid fa-cake-candles text-green-500"></i>
+                        <p>DOB: <span class="text-gray-300 ml-2">19/12/2000</span></p>
+                    </div>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-all duration-300 neon-box">
+                    <div class="flex items-center space-x-3">
+                        <i class="fa-solid fa-language text-green-500"></i>
+                        <p>Languages: <span class="text-gray-300 ml-2">Tamil, English, Malayalam</span></p>
+                    </div>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-all duration-300 neon-box">
+                    <div class="flex items-center space-x-3">
+                        <i class="fa-solid fa-church text-green-500"></i>
+                        <p>Religion: <span class="text-gray-300 ml-2">Christianity</span></p>
+                    </div>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-all duration-300 neon-box">
+                    <div class="flex items-center space-x-3">
+                        <i class="fa-solid fa-flag text-green-500"></i>
+                        <p>Nationality: <span class="text-gray-300 ml-2">Indian</span></p>
+                    </div>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-all duration-300 neon-box">
+                    <div class="flex items-center space-x-3">
+                        <i class="fa-solid fa-venus-mars text-green-500"></i>
+                        <p>Gender: <span class="text-gray-300 ml-2">Male</span></p>
+                    </div>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-all duration-300 neon-box">
+                    <div class="flex items-center space-x-3">
+                        <i class="fa-solid fa-phone text-green-500"></i>
+                        <p>Phone No: <span class="text-gray-300 ml-2">9487113621</span></p>
+                    </div>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-all duration-300 neon-box">
+                    <div class="flex items-center space-x-3">
+                        <i class="fa-solid fa-envelope text-green-500"></i>
+                        <p>Email Id: <span class="text-gray-300 ml-2">ajish560@gmail.com</span></p>
+                    </div>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-all duration-300 neon-box">
+                    <div class="flex items-center space-x-3">
+                        <i class="fa-solid fa-heart text-green-500"></i>
+                        <p>Marital Status: <span class="text-gray-300 ml-2">Single</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Academic Background -->
+            <h2 class="text-xl md:text-2xl font-semibold mt-12 text-green-500 text-center md:text-left">Academic <span class="text-white">Background</span></h2>
+            <div class="grid grid-cols-1 gap-6 mt-6">
+                <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-all duration-300 neon-box">
+                    <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-graduation-cap text-green-500 mt-1"></i>
+                        <div>
+                            <h3 class="font-semibold">St.Xavier's catholic college of Engineering</h3>
+                            <p class="text-gray-300">CGPA: 6.52</p>
+                            <p class="text-sm text-gray-400">2022 - 2025</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-all duration-300 neon-box">
+                    <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-computer text-green-500 mt-1"></i>
+                        <div>
+                            <h3 class="font-semibold">N.M.S Kamraj polytechnic college</h3>
+                            <p class="text-gray-300">Percentage: 74%</p>
+                            <p class="text-sm text-gray-400">2018 - 2021
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-all duration-300 neon-box">
+                    <div class="flex items-start space-x-3">
+                        <i class="fa-solid fa-school text-green-500 mt-1"></i>
+                        <div>
+                            <h3 class="font-semibold">St.Lawrence higher secondary school</h3>
+                            <p class="text-gray-300">SSLC: 66%</p>
+                            <p class="text-sm text-gray-400">2015 - 2016</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-10 md:py-16 bg-gray-900 text-white">
+        <div class="container mx-auto px-6">
+            <h1 class="text-2xl md:text-3xl font-semibold mb-8 text-center neon-text" data-aos="fade-up">
+                <i class="fa-solid fa-code text-green-500"></i> My <span class="text-green-500">Skills</span>
+            </h1>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Frontend Skills -->
+                <div class="bg-gray-800 p-6 rounded-lg neon-box" data-aos="fade-right">
+                    <h2 class="text-xl font-semibold mb-4 text-green-500">Frontend Development</h2>
+                    <div class="space-y-4">
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium">HTML</span>
+                                <span class="text-sm text-gray-400">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2 skill-glow">
+                                <div class="bg-green-500 h-2 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium">CSS</span>
+                                <span class="text-sm text-gray-400">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2 skill-glow">
+                                <div class="bg-green-500 h-2 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium">JavaScript</span>
+                                <span class="text-sm text-gray-400">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2 skill-glow">
+                                <div class="bg-green-500 h-2 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Backend Skills -->
+                <div class="bg-gray-800 p-6 rounded-lg neon-box" data-aos="fade-left">
+                    <h2 class="text-xl font-semibold mb-4 text-green-500">Backend Development</h2>
+                    <div class="space-y-4">
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium">Java</span>
+                                <span class="text-sm text-gray-400">75%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2 skill-glow">
+                                <div class="bg-green-500 h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium">MySQL</span>
+                                <span class="text-sm text-gray-400">70%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2 skill-glow">
+                                <div class="bg-green-500 h-2 rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium">Node.js</span>
+                                <span class="text-sm text-gray-400">65%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2 skill-glow">
+                                <div class="bg-green-500 h-2 rounded-full" style="width: 65%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools & Technologies -->
+                <div class="bg-gray-800 p-6 rounded-lg neon-box" data-aos="fade-right">
+                    <h2 class="text-xl font-semibold mb-4 text-green-500">Tools & Technologies</h2>
+                    <div class="space-y-4">
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium">Git</span>
+                                <span class="text-sm text-gray-400">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2 skill-glow">
+                                <div class="bg-green-500 h-2 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium">VS Code</span>
+                                <span class="text-sm text-gray-400">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2 skill-glow">
+                                <div class="bg-green-500 h-2 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium">Responsive Design</span>
+                                <span class="text-sm text-gray-400">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2 skill-glow">
+                                <div class="bg-green-500 h-2 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frameworks -->
+                <div class="bg-gray-800 p-6 rounded-lg neon-box" data-aos="fade-left">
+                    <h2 class="text-xl font-semibold mb-4 text-green-500">Frameworks & Libraries</h2>
+                    <div class="space-y-4">
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium">React</span>
+                                <span class="text-sm text-gray-400">70%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2 skill-glow">
+                                <div class="bg-green-500 h-2 rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium">Tailwind CSS</span>
+                                <span class="text-sm text-gray-400">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2 skill-glow">
+                                <div class="bg-green-500 h-2 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium">Bootstrap</span>
+                                <span class="text-sm text-gray-400">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2 skill-glow">
+                                <div class="bg-green-500 h-2 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="project" class="py-10 md:py-16 bg-gray-900 text-white">
+        <div class="container mx-auto px-6">
+            <h1 class="text-2xl md:text-3xl font-semibold mb-8 text-center neon-text">
+                <i class="fa-solid fa-laptop-code text-green-500"></i> My <span class="text-green-500">Projects</span>
+            </h1>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-all duration-300 neon-box" data-aos="fade-up">
+                    <img src="project1.png" alt="Project 1" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Portfolio Website</h3>
+                        <p class="text-gray-300 mb-4">Personal portfolio website built with HTML, CSS, and JavaScript.</p>
+                        <div class="flex gap-2 mb-4 flex-wrap">
+                            <span class="px-2 py-1 bg-gray-700 rounded-full text-sm">HTML</span>
+                            <span class="px-2 py-1 bg-gray-700 rounded-full text-sm">CSS</span>
+                            <span class="px-2 py-1 bg-gray-700 rounded-full text-sm">JavaScript</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/yourusername/project1" target="_blank" class="text-green-500 hover:text-green-400">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="https://project1-demo.com" target="_blank" class="text-green-500 hover:text-green-400">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add more project cards as needed -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-10 md:py-16 bg-gray-900 text-white">
+        <div class="container mx-auto px-6">
+            <h1 class="text-2xl md:text-3xl font-semibold mb-8 text-center neon-text">
+                <i class="fa-solid fa-envelope text-green-500"></i> Contact <span class="text-green-500">Me</span>
+            </h1>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <h2 class="text-xl font-semibold">Get in Touch</h2>
+                    <p class="text-gray-300">Feel free to reach out to me for any questions or opportunities!</p>
+                    
+                    <div class="flex items-center space-x-3">
+                        <i class="fa-solid fa-envelope text-green-500"></i>
+                        <p>ajish560@gmail.com</p>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <i class="fa-solid fa-phone text-green-500"></i>
+                        <p>+91 9487113621</p>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <i class="fa-solid fa-location-dot text-green-500"></i>
+                        <p>Tamil Nadu, India</p>
+                    </div>
+                </div>
+
+                <form id="contact-form" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Name</label>
+                        <input type="text" name="name" class="w-full px-4 py-2 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 neon-box" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Email</label>
+                        <input type="email" name="email" class="w-full px-4 py-2 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 neon-box" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Message</label>
+                        <textarea name="message" rows="4" class="w-full px-4 py-2 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 neon-box" required></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition duration-300 neon-box">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Add custom Tailwind animations
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'zoom-in': 'zoomIn 1.5s ease-out forwards',
+                    }
+                },
+                keyframes: {
+                    zoomIn: {
+                        '0%': { transform: 'scale(0)', opacity: '0' },
+                        '100%': { transform: 'scale(1)', opacity: '1' }
+                    }
+                }
+            }
+        }
+        
+        // Mobile menu toggle functionality
+        function closeDropdown() {
+            const dropdown = document.querySelector('.dropdown');
+            if (dropdown.classList.contains('active')) {
+                dropdown.classList.remove('active');
+                setTimeout(() => {
+                    dropdown.style.display = 'none';
+                }, 300);
+            }
+        }
+
+        function hamburg() {
+            const dropdown = document.querySelector('.dropdown');
+            if (dropdown.classList.contains('active')) {
+                dropdown.classList.remove('active');
+                setTimeout(() => {
+                    dropdown.style.display = 'none';
+                }, 300);
+            } else {
+                dropdown.style.display = 'block';
+                setTimeout(() => {
+                    dropdown.classList.add('active');
+                }, 10);
+            }
+        }
+        
+        // Typewriter effect
+        const professions = ["Web Developer", "Frontend Developer", "UI Designer", "JavaScript Coder"];
+        let professionIndex = 0;
+        let textIndex = 0;
+        let currentText = "";
+        let isDeleting = false;
+        
+        function typeWriter() {
+            const typewriterElement = document.querySelector('.typewriter-text');
+            const currentProfession = professions[professionIndex];
+            
+            if (isDeleting) {
+                currentText = currentProfession.substring(0, textIndex - 1);
+                textIndex--;
+            } else {
+                currentText = currentProfession.substring(0, textIndex + 1);
+                textIndex++;
+            }
+            
+            typewriterElement.textContent = currentText;
+            
+            let typingSpeed = isDeleting ? 100 : 150;
+            
+            if (!isDeleting && textIndex === currentProfession.length) {
+                typingSpeed = 1500; // Pause at end
+                isDeleting = true;
+            } else if (isDeleting && textIndex === 0) {
+                isDeleting = false;
+                professionIndex = (professionIndex + 1) % professions.length;
+                typingSpeed = 500; // Pause before typing next profession
+            }
+            
+            setTimeout(typeWriter, typingSpeed);
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                offset: 80,
+                delay: 0,
+                duration: 200,
+                easing: 'ease',
+                once: false,
+                mirror: false,
+                anchorPlacement: 'top-bottom',
+                disable: window.innerWidth < 768 ? false : false // Changed to enable on mobile
+            });
+            
+            // Start typewriter effect
+            typeWriter();
+        });
+    </script>
+
+    <!-- Add EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        // Initialize EmailJS
+        emailjs.init("xNG79fHoO8xEyvLrM"); // Replace with your EmailJS public key
+
+        // Contact form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            emailjs.sendForm('service_vg57j5c', 'template_oo6uc9r', this)
+                .then(function() {
+                    alert('Message sent successfully!');
+                    e.target.reset();
+                }, function(error) {
+                    alert('Failed to send message. Please try again.');
+                });
+        });
+    </script>
+</body>
+</html>
